@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_music_genres
+    - node.type.music_tracks
+id: node.music_tracks.field_music_genres
+field_name: field_music_genres
+entity_type: node
+bundle: music_tracks
+label: 'Music Genres'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

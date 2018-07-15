@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_upload_video
+    - node.type.video_series
+  module:
+    - video
+id: node.video_series.field_upload_video
+field_name: field_upload_video
+entity_type: node
+bundle: video_series
+label: 'Upload video'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_extensions: ''
+  file_directory: 'videos/[date:custom:Y]-[date:custom:m]'
+  max_filesize: ''
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: video

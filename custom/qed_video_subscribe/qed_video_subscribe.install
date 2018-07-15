@@ -1,0 +1,42 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function qed_video_subscribe_schema() {
+  $schema['video_subscribe'] = array(
+    'description' => 'store user id and subscription id.',
+    'fields' => array(
+      'id' => array(
+        'description' => 'primary key',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'uid' => array(
+        'description' => 'User Id',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0, 
+      ),
+      'sid' => array(
+        'description' => 'Subscription Id',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'date_time' => array(
+        'description' => 'Date and time of subscribe',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,  
+      ),      
+    ),
+    'primary key' => array('id'),
+  );
+
+  return $schema;
+}

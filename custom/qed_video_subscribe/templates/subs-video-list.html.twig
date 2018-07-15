@@ -1,0 +1,11 @@
+<table>
+{% for item in svl %}
+  <tr>
+    <td>
+      <div>
+        <a href="{{ path('entity.node.canonical', {'node': item.nid}) }}">{{ item.title }}</a>
+      </div>
+    </td>	
+  </tr>
+{% endfor %}
+</table>

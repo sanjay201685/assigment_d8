@@ -1,0 +1,46 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.video_series.body
+    - field.field.node.video_series.field_upload_video
+    - field.field.node.video_series.field_video_subscription_id
+    - node.type.video_series
+  module:
+    - text
+    - user
+    - video
+id: node.video_series.default
+targetEntityType: node
+bundle: video_series
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_upload_video:
+    weight: 102
+    label: above
+    settings:
+      width: '854'
+      height: '480'
+      autoplay: true
+    third_party_settings: {  }
+    type: video_embed_player
+    region: content
+  field_video_subscription_id:
+    weight: 103
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden: {  }

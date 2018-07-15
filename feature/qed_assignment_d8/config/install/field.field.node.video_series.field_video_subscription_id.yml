@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_video_subscription_id
+    - node.type.video_series
+    - node.type.video_subscription
+id: node.video_series.field_video_subscription_id
+field_name: field_video_subscription_id
+entity_type: node
+bundle: video_series
+label: 'Video Subscription id'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      video_subscription: video_subscription
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

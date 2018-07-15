@@ -1,0 +1,16 @@
+name: qed_assignment_d8
+type: module
+core: 8.x
+dependencies:
+  - comment
+  - field
+  - file
+  - image
+  - menu_ui
+  - node
+  - path
+  - text
+  - user
+  - video
+  - views
+version: 8.x-1.0

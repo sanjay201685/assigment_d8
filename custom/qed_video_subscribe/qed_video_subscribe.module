@@ -1,0 +1,55 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function qed_video_subscribe_theme($existing, $type, $theme, $path) {
+  return [
+  	'video_list' => [
+  	  'variables' => ['vds' => NULL, 'subs_id' => NULL],
+  	],
+    'subs_video_list' => [
+      'variables' => ['svl' => NULL],
+    ],
+  ];
+}
+
+/**
+ * Geting subscriptions ids if $sid not NULL else counting total 
+ * no of subscriptions.
+ */
+function getSubscribeId($sid = NULL) {
+  
+  // Checking $sid is null or not.
+  if(is_null($sid)) {
+    $vsl = \Drupal::database()->select('video_subscribe', 's');
+    $vsl->fields('s', array('sid'));
+    $vsl->condition('s.uid', \Drupal::currentUser()->id(), '=');
+    $vsl_result = $vsl->execute()->fetchAll();
+
+    // Subscribe ids string in array format so that can check in 
+    // twig file id exist in array or not
+    $subs_id = array();
+    foreach ($vsl_result as $key => $value) {
+      $subs_id[$value->sid] = $value->sid;
+    }
+
+    return $subs_id;
+  }
+  else {
+    // Checking current user taken any subscription or not.
+  	$vsl = \Drupal::database()->select('video_subscribe', 's');
+    $vsl->fields('s', array('sid'));
+    $vsl->condition('s.uid', \Drupal::currentUser()->id(), '=');
+    $vsl->condition('s.sid', $sid, '=');
+    $vsl_result = $vsl->countQuery()->execute()->fetchField();
+
+    // If user taken any subscription then return 1 else 0.
+    if($vsl_result > 0) {
+  	  return 1;
+    }
+    else {
+  	  return 0;
+    }
+  }
+}

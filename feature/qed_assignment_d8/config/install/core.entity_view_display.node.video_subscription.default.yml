@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.video_subscription.body
+    - node.type.video_subscription
+  module:
+    - text
+    - user
+id: node.video_subscription.default
+targetEntityType: node
+bundle: video_subscription
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden: {  }

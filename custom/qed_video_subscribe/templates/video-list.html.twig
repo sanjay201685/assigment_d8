@@ -1,0 +1,17 @@
+<table>
+{% for item in vds %}
+  <tr>
+    <td>
+      <div>
+        <a href="{{ path('entity.node.canonical', {'node': item.nid}) }}">{{ item.title }}</a>
+        {% if item.nid in subs_id|keys %}
+          -- You have successfully subscribe <a href="videos/{{item.nid}}">Click here</a> for video list.
+        {% endif %}
+      </div>
+      <div>
+        {{ item.body_value|raw }}
+      </div> 
+    </td>	
+  </tr>
+{% endfor %}
+</table>

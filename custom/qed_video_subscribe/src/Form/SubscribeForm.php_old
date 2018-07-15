@@ -1,0 +1,78 @@
+<?php
+
+namespace Drupal\qed_video_subscribe\Form;
+
+use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Ajax\ChangedCommand;
+use Drupal\Core\Ajax\CssCommand;
+use Drupal\Core\Ajax\HtmlCommand;
+use Drupal\Core\Ajax\InvokeCommand;
+use Drupal\Core\Form\FormBase;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * State Confirm form of tms story, component, scheduler and template entity.
+ */
+class QedSubscribForm extends FormBase {
+  
+  /**
+   * {@inheritdoc}
+   */ 
+  public function getFormId() {
+  	return 'subscrib_form';
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  //public function buildForm(array $form, FormStateInterface $form_state, $parameter = NULL) {
+  public function buildForm(array $form, FormStateInterface $form_state) {
+    $form['message'] = [
+      '#type' => 'markup',
+      '#markup' => '<div class="result_message"></div>'
+    ];
+
+    $form['sid'] = array(
+      '#type' => 'textfield',
+      '#default_value' => '1',
+    );
+
+    // On click using ajax to update current user subscription 
+    // in custom table 'video_subscribe'.
+    $form['actions'] = array(
+      '#type' => 'button',
+      '#value' => 'Subscribe',
+      'event' => 'click',
+      '#ajax' => array(
+      	'callback' => '::subscribeVideo',
+      	'event' => 'click',
+        'progress' => array(
+          'type' => 'throbber',
+          'message' => 'Getting Random Username',
+        ),
+      ), 
+    );
+
+    return $form;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  /*public function submitForm(array &$form, FormStateInterface $form_state) {
+    return $form;;  
+  }*/
+
+  public function subscribeVideo(array $form, FormStateInterface $form_state) {
+    
+    $response = new AjaxResponse();
+    $response->addCommand(
+      new HtmlCommand(
+      	'.result_message',
+        '<div class="my_top_message">Subscribe Successfully.</div>')
+      )
+    );
+
+	return $response;
+  }
+}

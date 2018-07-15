@@ -1,0 +1,5 @@
+name: QED video subscribe
+description: Video subscribe
+core: 8.x
+package: custom
+type: module

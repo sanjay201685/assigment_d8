@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.video_series.body
+    - field.field.node.video_series.field_upload_video
+    - field.field.node.video_series.field_video_subscription_id
+    - node.type.video_series
+  module:
+    - text
+    - user
+id: node.video_series.teaser
+targetEntityType: node
+bundle: video_series
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_upload_video: true
+  field_video_subscription_id: true

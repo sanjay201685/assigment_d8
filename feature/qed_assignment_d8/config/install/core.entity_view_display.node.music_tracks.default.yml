@@ -1,0 +1,49 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.music_tracks.body
+    - field.field.node.music_tracks.field_album_reference
+    - field.field.node.music_tracks.field_music_genres
+    - node.type.music_tracks
+  module:
+    - text
+    - user
+id: node.music_tracks.default
+targetEntityType: node
+bundle: music_tracks
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_album_reference:
+    weight: 102
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_music_genres:
+    weight: 103
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  flag_favorites:
+    weight: 10
+    region: content
+  links:
+    weight: 100
+    region: content
+  rate_vote_widget:
+    weight: 100
+    region: content
+hidden: {  }
